@@ -1,6 +1,9 @@
 package com.example.mvc.controller
 
 import com.example.mvc.domain.Member
+import org.slf4j.LoggerFactory
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RequestMapping("api/v1")
@@ -23,11 +26,21 @@ class PostController {
     }
 
     @PostMapping("/post-mapping/object")
-    fun postMapping(@RequestBody request: Member.Request): Member.Response {
-        return Member.Response(
-            name = request.name,
-            age = request.age,
-            phoneNumber = request.phoneNumber
-        )
+    fun postMapping(@RequestBody request: Member.Request): ResponseEntity<Member.Response> {
+
+        logger.info("save something...")
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(
+                Member.Response(
+                    name = request.name,
+                    age = request.age,
+                    phoneNumber = request.phoneNumber
+                )
+            )
+    }
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(this::class.java)
     }
 }
