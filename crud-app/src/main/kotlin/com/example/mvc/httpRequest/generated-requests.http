@@ -4,8 +4,17 @@ GET http://localhost:8080/api/v1/hello/goodall/30
 ### request param
 GET http://localhost:8080/api/v1/hello/query-params?age=30&name=goodall&phone-number=010-1234-5678
 
+### request param fail 500
+GET http://localhost:8080/api/v1/hello/query-params/without-annotation?age=30
+
+### request param fail 400
+GET http://localhost:8080/api/v1/hello/query-params/without-annotation?name=goodall
+
 ### request param (object)
 GET http://localhost:8080/api/v1/hello/query-params/object?age=30&name=goodall&phoneNumber=010-1234-5678
+
+### request param (object without annotation) 400
+GET http://localhost:8080/api/v1/hello/query-params/object/without-annotation
 
 ### request param (map)
 GET http://localhost:8080/api/v1/hello/query-params/map?name=goodall
