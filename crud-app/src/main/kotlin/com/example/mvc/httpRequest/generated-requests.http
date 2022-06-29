@@ -18,3 +18,34 @@ GET http://localhost:8080/api/v1/hello/query-params/object/without-annotation
 
 ### request param (map)
 GET http://localhost:8080/api/v1/hello/query-params/map?name=goodall
+
+
+### with validate (GET)
+GET http://localhost:8080/api/v1/validate/sample2?age=101&name=goodall&phoneNumber=010-1234-5678
+
+### with validate (Post)
+POST http://localhost:8080/api/v1/validate/sample2
+Content-Type: application/json
+
+{
+  "name": "goodall",
+  "age": 30
+}
+
+### Fail with validate (Post)
+POST http://localhost:8080/api/v1/validate/sample2
+Content-Type: application/json
+
+{
+  "name": "unluckyjung",
+  "age": 101
+}
+
+### Fail with validate (Post)
+POST http://localhost:8080/api/v1/validate/sample2
+Content-Type: application/json
+
+{
+  "name": "jys",
+  "age": 29
+}
