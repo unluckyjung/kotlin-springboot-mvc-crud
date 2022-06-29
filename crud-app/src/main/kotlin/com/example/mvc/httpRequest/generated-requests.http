@@ -19,9 +19,12 @@ GET http://localhost:8080/api/v1/hello/query-params/object/without-annotation
 ### request param (map)
 GET http://localhost:8080/api/v1/hello/query-params/map?name=goodall
 
-
-### with validate (GET)
+### with validate FAIL (GET) [Valid, MethodArgumentValidException] 4xx ERROR
 GET http://localhost:8080/api/v1/validate/sample2?age=101&name=goodall&phoneNumber=010-1234-5678
+
+### with validate Fail (Post) [Validate, ConstraintViolationException] 5xx ERROR
+POST http://localhost:8080/api/v1/validate/sample1?age=0
+
 
 ### with validate (Post)
 POST http://localhost:8080/api/v1/validate/sample2
