@@ -21,6 +21,16 @@ class GetController {
         return "Hello $name, your age is $age"
     }
 
+    @GetMapping("/hello/{age}/default-test1", "/hello/default-test1")
+    fun pathDefaultTest(
+//        @PathVariable(required = false) age: Int = 10
+//        @PathVariable(required = false) age: Int? = 10
+        @PathVariable(name = "age", required = false) _age: Int?
+    ): String {
+        val age = _age ?: 10
+        return "age: $age"
+    }
+
     @GetMapping("/hello2/{name}/{age}")
     fun pathHello2(
         @PathVariable(name = "name") memberName: String,
