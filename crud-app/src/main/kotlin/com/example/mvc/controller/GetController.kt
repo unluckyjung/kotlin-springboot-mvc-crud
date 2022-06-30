@@ -50,6 +50,23 @@ class GetController {
         return "name: $name, age: $age"
     }
 
+
+    // input null, return 77
+    @GetMapping("hello/query-params/default-test1")
+    fun helloQueryParamsDefaultTest1(
+        @RequestParam(defaultValue = "77", required = false) age: Int?,
+    ): String {
+        return "age: $age"
+    }
+
+    // input null, return null
+    @GetMapping("hello/query-params/default-test2")
+    fun helloQueryParamsDefaultTest2(
+        @RequestParam(required = false) age: Int? = 77,
+    ): String {
+        return "age: $age"
+    }
+
     // http://localhost:8080/api/v1/hello/query-params/object?age=30&name=goodall&phoneNumber=010-1234-5678
     // get + requestBody 방식이 아님.
     @GetMapping("/hello/query-params/object")
