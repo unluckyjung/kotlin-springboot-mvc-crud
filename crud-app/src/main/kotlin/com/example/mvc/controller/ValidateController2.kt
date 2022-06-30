@@ -4,6 +4,7 @@ import com.example.mvc.domain.ValidateMember
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.validation.FieldError
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
@@ -13,6 +14,16 @@ class ValidateController2 {
 
     @GetMapping("/sample2")
     fun fun1(@Valid @ModelAttribute req: ValidateMember.Request): ValidateMember.Response {
+        return ValidateMember.Response(
+            name = req.name,
+            age = req.age,
+            email = req.email,
+            phoneNumber = req.phoneNumber
+        )
+    }
+
+    @GetMapping("/sample21")
+    fun fun11(@Validated @ModelAttribute req: ValidateMember.Request): ValidateMember.Response {
         return ValidateMember.Response(
             name = req.name,
             age = req.age,
