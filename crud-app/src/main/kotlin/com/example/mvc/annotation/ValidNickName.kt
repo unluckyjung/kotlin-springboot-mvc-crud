@@ -7,9 +7,8 @@ import kotlin.reflect.KClass
 
 @Constraint(validatedBy = [NickNameValidator::class])
 @Target(
+    AnnotationTarget.VALUE_PARAMETER,
     AnnotationTarget.FIELD,
-    AnnotationTarget.PROPERTY_GETTER,
-    AnnotationTarget.PROPERTY_SETTER
 )
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented

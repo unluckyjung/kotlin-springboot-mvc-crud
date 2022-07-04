@@ -77,3 +77,26 @@ GET http://localhost:8080/api/v1/hello/query-params/default-test2
 ### RequestParam Default Value Test (return default value)
 GET http://localhost:8080/api/v1/hello/query-params/default-test1
 
+
+### Exception Basic
+GET http://localhost:8080/api/v1/exception/basic
+
+
+### Exception age
+GET http://localhost:8080/api/v1/exception/age
+Content-Type: application/json
+
+{
+  "age": -1
+}
+
+### Exception Custom Validation Annotation (ReqeustBody)
+GET http://localhost:8080/api/v1/exception/nickName
+Content-Type: application/json
+
+{
+  "nickName": "goodall"
+}
+
+### Exception Custom Validation Annotation (Param)
+GET http://localhost:8080/api/v1/exception/nickName2?nickName=goodall
