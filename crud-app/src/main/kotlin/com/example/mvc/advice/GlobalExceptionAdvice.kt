@@ -13,7 +13,7 @@ class GlobalExceptionAdvice {
     @ExceptionHandler(value = [Exception::class])
     fun basic(e: Exception): ResponseEntity<ExceptionDto> {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-            ExceptionDto(e.toString())
+            ExceptionDto(e.toString(), value = null)
         )
     }
 
@@ -22,20 +22,35 @@ class GlobalExceptionAdvice {
         val fieldError = e.bindingResult.fieldError
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-            ExceptionDto("by valid advice: ${fieldError?.defaultMessage} [${fieldError?.rejectedValue}]")
+            fieldError?.let {
+                ExceptionDto(
+                    message = "by validated advice: ${fieldError.defaultMessage}",
+                    field = fieldError.field,
+                    value = fieldError.rejectedValue
+                )
+            }
         )
     }
 
     @ExceptionHandler(value = [ConstraintViolationException::class])
     fun validatedExceptionHandler(e: ConstraintViolationException): ResponseEntity<ExceptionDto> {
         val errorMsg = e.constraintViolations.firstOrNull()
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-            ExceptionDto("by validated advice: ${errorMsg?.messageTemplate} [${errorMsg?.invalidValue}]")
+            errorMsg?.let {
+                ExceptionDto(
+                    "by validated advice: ${errorMsg.message}",
+                    errorMsg.propertyPath.last().name,
+                    errorMsg.invalidValue,
+                )
+            }
         )
     }
 }
 
 
 data class ExceptionDto(
-    val message: String
+    val message: String = "default Msg",
+    val field: String = "default field",
+    val value: Any?,
 )
