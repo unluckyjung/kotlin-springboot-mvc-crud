@@ -1,5 +1,6 @@
 package com.example.mvc.domain
 
+import com.example.mvc.annotation.ValidNickName
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
@@ -12,6 +13,8 @@ class ValidateMember(
 ) {
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
     data class Request(
+
+        @field:ValidNickName
         @field:NotBlank(message = "이름은 공백이나 null로 이루어질 수 없습니다.")
         @field:Size(min = 2, max = 10)
         val name: String,
