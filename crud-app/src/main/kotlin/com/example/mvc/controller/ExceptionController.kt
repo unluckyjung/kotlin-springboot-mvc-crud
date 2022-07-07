@@ -45,6 +45,6 @@ data class ValidAgeDto(
 )
 
 data class ValidNickNameDto(
-    @field:ValidNickName
+    @field:ValidNickName(inValidNickNames = ["fortune", "cookie"])
     val nickName: String
 )

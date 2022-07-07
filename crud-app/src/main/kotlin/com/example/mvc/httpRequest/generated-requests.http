@@ -95,7 +95,7 @@ GET http://localhost:8080/api/v1/exception/nickName
 Content-Type: application/json
 
 {
-  "nickName": "goodall"
+  "nickName": "fortune"
 }
 
 ### Exception Custom Validation Annotation (Param)

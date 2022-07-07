@@ -13,6 +13,7 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @MustBeDocumented
 annotation class ValidNickName(
+    val inValidNickNames: Array<String> = [],
     val message: String = "금지된 닉네임 입니다.",
     val groups: Array<KClass<*>> = [],
     val payload: Array<KClass<out Payload>> = []

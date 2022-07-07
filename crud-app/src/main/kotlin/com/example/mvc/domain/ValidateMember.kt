@@ -14,7 +14,7 @@ class ValidateMember(
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
     data class Request(
 
-        @field:ValidNickName
+        @field:ValidNickName(inValidNickNames = ["fortune", "cookie"])
         @field:NotBlank(message = "이름은 공백이나 null로 이루어질 수 없습니다.")
         @field:Size(min = 2, max = 10)
         val name: String,
