@@ -11,7 +11,6 @@ import kotlin.reflect.KClass
     AnnotationTarget.FIELD,
 )
 @Retention(AnnotationRetention.RUNTIME)
-@MustBeDocumented
 annotation class ValidNickName(
     val inValidNickNames: Array<String> = [],
     val message: String = "금지된 닉네임 입니다.",
