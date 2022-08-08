@@ -50,8 +50,8 @@ class GetController {
     }
 
 
-    // name null = 500 에러 + NPE (kotlin not null)
-    // age null = 400 에러 (required = false)
+    // name null = 500 에러 + NPE (required = false, kotlin not null)
+    // age null = 400 에러 (required = true)
     @GetMapping("hello/query-params/without-annotation")
     fun helloQueryParamsWithoutAnnotation(
         name: String,
