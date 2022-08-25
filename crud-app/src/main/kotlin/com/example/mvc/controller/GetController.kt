@@ -64,7 +64,8 @@ class GetController {
     // input null, return 77
     @GetMapping("hello/query-params/default-test1")
     fun helloQueryParamsDefaultTest1(
-        @RequestParam(defaultValue = "77", required = false) age: Int?,
+//        @RequestParam(defaultValue = "77", required = false) age: Int?,
+        @RequestParam(defaultValue = "77", required = false) age: Int,  // NotNull 타입이지만 null 로 받아도 에러 발생 x (77이 먼저 차서 들어옴)
     ): String {
         return "age: $age"
     }
