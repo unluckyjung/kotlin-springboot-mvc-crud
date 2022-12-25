@@ -65,7 +65,10 @@ class GetController {
     @GetMapping("hello/query-params/default-test1")
     fun helloQueryParamsDefaultTest1(
 //        @RequestParam(defaultValue = "77", required = false) age: Int?,
-        @RequestParam(defaultValue = "77", required = false) age: Int,  // NotNull 타입이지만 null 로 받아도 에러 발생 x (77이 먼저 차서 들어옴)
+        @RequestParam(
+            defaultValue = "77",
+            required = false
+        ) age: Int,  // NotNull 타입이지만 null 로 받아도 에러 발생 x (77이 먼저 차서 들어옴)
     ): String {
         return "age: $age"
     }
@@ -107,5 +110,10 @@ class GetController {
     @GetMapping("/list")
     fun listGet(@RequestParam(required = true) values: List<String>): List<String> {
         return values.map { "$it return" }.toList()
+    }
+
+    @GetMapping("/required-test")
+    fun requiredTest(@RequestParam(required = true) value: String): String {
+        return "$value + return"
     }
 }

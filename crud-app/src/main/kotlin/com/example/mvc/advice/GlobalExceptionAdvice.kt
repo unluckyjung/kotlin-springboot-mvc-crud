@@ -3,6 +3,7 @@ package com.example.mvc.advice
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
+import org.springframework.web.bind.MissingServletRequestParameterException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import javax.validation.ConstraintViolationException
@@ -14,6 +15,17 @@ class GlobalExceptionAdvice {
     fun basic(e: Exception): ResponseEntity<ExceptionDto> {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
             ExceptionDto(e.toString(), value = null)
+        )
+    }
+
+    @ExceptionHandler(value = [MissingServletRequestParameterException::class])
+    fun requireNullExceptionHandler(e: MissingServletRequestParameterException): ResponseEntity<ExceptionDto> {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+            ExceptionDto(
+                message = "필수로 있어야하는 값에서 요청이 null 로 왔습니다.",
+                field = e.parameterName,
+                value = null,
+            )
         )
     }
 
