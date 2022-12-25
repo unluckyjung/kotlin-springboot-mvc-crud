@@ -100,3 +100,6 @@ Content-Type: application/json
 
 ### Exception Custom Validation Annotation (Param)
 GET http://localhost:8080/api/v1/exception/nickName2?nickName=goodall
+
+### list @RequestParam
+GET http://localhost:8080/api/v1/list?values=1,2,3,4,5

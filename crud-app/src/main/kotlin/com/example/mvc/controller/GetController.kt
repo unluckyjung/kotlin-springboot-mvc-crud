@@ -103,4 +103,9 @@ class GetController {
     fun helloQueryParamsMap(@RequestParam request: Map<String, Any>): Map<String, Any> {
         return request
     }
+
+    @GetMapping("/list")
+    fun listGet(@RequestParam(required = true) values: List<String>): List<String> {
+        return values.map { "$it return" }.toList()
+    }
 }
