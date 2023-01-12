@@ -1,0 +1,16 @@
+### list emptyStringTest
+GET http://localhost:8080/api/v1/error/list-empty-string
+Content-Type: application/json
+
+{
+  "list": [20,21,""]
+}
+
+### list TypeErrorTest
+GET http://localhost:8080/api/v1/error/list-empty-string
+Content-Type: application/json
+
+{
+  "list": [20,21,"yoonsung"]
+}
+
