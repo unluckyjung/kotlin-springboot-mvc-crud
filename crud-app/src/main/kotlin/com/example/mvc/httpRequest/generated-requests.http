@@ -22,13 +22,13 @@ GET http://localhost:8080/api/v1/hello/query-params/object/without-annotation
 ### request param (map)
 GET http://localhost:8080/api/v1/hello/query-params/map?name=goodall
 
-### with validate FAIL (GET) [Valid(파라메터), MethodArgumentValidException] 4xx ERROR
+### with validate FAIL (GET) [Valid(파라메터), MethodArgumentValidException] 4xx ERROR / 나이가 100살 이상
 GET http://localhost:8080/api/v1/validate/sample2?age=101&name=goodall&phoneNumber=010-1234-5678
 
-### with validate FAIL (GET) [Valided(파라메터), MethodArgumentValidException] 4xx ERROR
+### with validate FAIL (GET) [Validated(파라메터), MethodArgumentValidException] 4xx ERROR / 나이가 100살 이상
 GET http://localhost:8080/api/v1/validate/sample21?age=101&name=goodall&phoneNumber=010-1234-5678
 
-### with validate FAIL (Post) [Validate(클래스), ConstraintViolationException] 5xx ERROR
+### with validate FAIL (Post) [Validate(클래스), ConstraintViolationException] 5xx ERROR / 나이가 0살
 POST http://localhost:8080/api/v1/validate/sample1?age=0
 
 
